@@ -1,0 +1,93 @@
+<header>
+	<div class="header-style">
+		Subham Pandey
+	</div>
+</header>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 md-offset-4">
+			<p>Add Rule</p>
+			<form (ngSubmit)="addRule()">
+				<div class="row">
+					<div class="col-md-12 field-container">
+						<mat-form-field>
+							<label>Name</label>
+					    	<input class="field-cls" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher" type="text">
+					    	<mat-error *ngIf="nameFormControl.hasError('required')">
+						      	Name is <strong>required</strong>
+						    </mat-error>
+					  	</mat-form-field>
+					</div>
+					<div class="col-md-12 field-container">
+					  	<mat-form-field>
+							<label>Company</label>
+					    	<input class="field-cls" matInput [formControl]="companyFormControl" [errorStateMatcher]="matcher" type="text">
+					    	<mat-error *ngIf="companyFormControl.hasError('required')">
+						      	Company is <strong>required</strong>
+						    </mat-error>
+					  	</mat-form-field>
+					</div>
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-4 field-container">
+							  	<mat-form-field>
+							  		<mat-select class="field-cls" matInput [formControl]="rule1FormControl" [errorStateMatcher]="matcher">
+							  			<mat-option value="1">1</mat-option>
+							  		</mat-select>
+							    	<mat-error *ngIf="rule1FormControl.hasError('required')">
+								      	Rule 1 is <strong>required</strong>
+								    </mat-error>
+							  	</mat-form-field>
+							</div>
+							<div class="col-md-4 field-container">
+							  	<mat-form-field>
+							  		<mat-select class="field-cls" matInput [formControl]="formulaFormControl" [errorStateMatcher]="matcher">
+							  			<mat-option value="1">1</mat-option>
+							  		</mat-select>
+							    	<mat-error *ngIf="formulaFormControl.hasError('required')">
+								      	Formula is <strong>required</strong>
+								    </mat-error>
+							  	</mat-form-field>
+							</div>
+							<div class="col-md-4 field-container">
+							  	<mat-form-field>
+							  		<input class="field-cls" matInput [formControl]="valueFormControl" [errorStateMatcher]="matcher" type="text">
+							    	<mat-error *ngIf="valueFormControl.hasError('required')">
+								      	Value is <strong>required</strong>
+								    </mat-error>
+							  	</mat-form-field>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 field-container">
+						<button mat-button class="field-cls btn-theme-color" (click)="submitted=true" >Add Rule</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 30px;">
+		<div class="col-md-12">
+			<table class="table table-striped">
+		    	<thead>
+			      	<tr>
+			        	<th>Name</th>
+			        	<th>Company</th>
+			        	<th>Rule</th>
+			        	<th>Formula</th>
+			        	<th>Value</th>
+			      	</tr>
+		    	</thead>
+		    	<tbody>
+		      		<tr *ngFor = "let rule of rules; index as i;">
+		        		<td>{{ rule.name }}</td>
+		        		<td>{{ rule.company }}</td>
+		        		<td>{{ rule.rule1 }}</td>
+		        		<td>{{ rule.formula }}</td>
+		        		<td>{{ rule.value }}</td>
+		      		</tr>
+		    	</tbody>
+		  	</table>
+		</div>
+	</div>
+</div>
